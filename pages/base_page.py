@@ -146,6 +146,7 @@ class BasePage:
     def get_screenshot(self) -> None:
         """Perform screenshot during tests"""
         self.driver.get_screenshot_as_png()
+
     @staticmethod
     def get_random_string(length: int) -> str:
         """"Generates random string
@@ -156,6 +157,13 @@ class BasePage:
         letters = string.ascii_lowercase
         result_string = ''.join(random.choice(letters) for i in range(length))
         return result_string
+    @staticmethod
+    def display_report() -> None:
+        os.sytem(settings.ALLURE_MAKE_REPORT)
+    
+    @staticmethod
+    def remove_reports_file() -> None:
+        os.system(f'rm {settings.BASE_REPORTS_DIR}/reports/*')
 
     def get_tab_column_content(self, column_index: int) -> list:
         """"Gets text from selected column

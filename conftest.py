@@ -16,4 +16,4 @@ def driver(request):
     #Here you can add more pages
     yield driver
     driver.quit()
-    time.sleep(2)
+    time.sleep(settings.SYSTEM_DELAY)
