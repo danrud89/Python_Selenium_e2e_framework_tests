@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 
-# TU WPISUJESZ WSZSYTKIE LOCATORY NA ZE STRONY Z PODZIAŁEM NA KLASY ZE WZGLĘDU NA UMIEJSCOWIENIE/MODALE/STOPKI itp
 class LoginPageLocators:
     APP_TITLE = (
         By.ID,
