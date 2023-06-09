@@ -1,11 +1,9 @@
-# najpierw biblioteki Python
 import time
+from pages import error_messages
 
-#Potem biblioteki zewnętrzne
 import pytest
 from faker import Faker
 
-#Na końcu importy własne
 from e2e.test_base import BaseTest
 from pages.locators import (
    LoginPageLocators, MainPageHeaderLocators
@@ -32,9 +30,9 @@ class TestAuthenticateAndLogin(BaseTest):
         )
     def test_login_with_invalid_credentials(self, login, password):
         self.login_page.login(login, password)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         get_error_content = self.get_element_text(LoginPageLocators.LOGIN_ERROR)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY))
         assert get_error_content == error_messages.LOGIN_ERROR
         
     def test_login_success(self):

@@ -20,7 +20,7 @@ class BasePage:
 
     def __init__(self, driver) -> None:
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
+        self.wait = WebDriverWait(self.driver, settings.LOAD_DATA_DELAY)
         self.actions = ActionChains(self.driver)
 
     def click(self, by_locator: tuple) -> None:
@@ -37,7 +37,7 @@ class BasePage:
         """Performs selection by name from a list received from the endpoint."""
         if by_locator:
             self.click(by_locator)
-            time.sleep(1)
+            time.sleep(settings.SYSTEM_DELAY)
         self.click((By.XPATH, f"//{element}[text()='{name}']"))
 
     def select_element_by_index(self, by_locator: tuple, index: int) -> None:

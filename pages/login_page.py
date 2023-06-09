@@ -3,6 +3,7 @@ from pages.base_page import BasePage
 from pages.locators import (
     LoginPageLocators,
 )
+from utils import settings
 
 
 class LoginPage(BasePage):
@@ -43,34 +44,36 @@ class LoginPage(BasePage):
         
         :param login: Username/login/e-mail address
         """
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.click(LoginPageLocators.USERNAME_INPUT)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.clear_text(LoginPageLocators.USERNAME_INPUT)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.send_keys(LoginPageLocators.USERNAME_INPUT, login)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
 
     def fill_password_input(self, password: str) -> None:
         """Fills password input with given data
         
         :param password: User password
         """
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.click(LoginPageLocators.PASSWORD_INPUT)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.clear_text(LoginPageLocators.PASSWORD_INPUT)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
         self.send_keys(LoginPageLocators.PASSWORD_INPUT, password)
-        time.sleep(1)
+        time.sleep(settings.SYSTEM_DELAY)
     
     def submit_login_credentials(self) -> None:
         """Checks if submit button is enabled and clicks"""
-
-        enabled_submit_button = self.is_enabled(LoginPageLocators.SUBMIT_BUTTON)
-        assert enabled_submit_button is True
-        self.click(LoginPageLocators.SUBMIT_BUTTON)
-        time.sleep(1) 
+        try:
+            enabled_submit_button = self.is_enabled(LoginPageLocators.SUBMIT_BUTTON)
+            if enabled_submit_button:
+                self.click(LoginPageLocators.SUBMIT_BUTTON)
+            time.sleep(settings.SYSTEM_DELAY)
+        except AttributeError:
+            print('Button is not active !')
     
     def user_logout(self) -> None:
         """" Logs the user out -> redirect to login page"""

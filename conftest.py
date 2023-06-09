@@ -13,7 +13,7 @@ def driver(request):
     driver.get(settings.URL)
     request.cls.login_page = LoginPage(driver)
     request.cls.main_page = MainPage(driver)
-    #tu dodajesz kolejne pages
+    #Here you can add more pages
     yield driver
     driver.quit()
     time.sleep(2)

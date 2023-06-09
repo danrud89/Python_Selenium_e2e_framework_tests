@@ -7,7 +7,6 @@ USER_LOGIN = f'login'
 USER_PASSWORD = f'password'
 
 #Tests timeouts (seconds)
-
 SYSTEM_DELAY = 1
 RENDER_PAGE_DELAY = 2
 SERVER_DELAY = 5

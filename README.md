@@ -7,7 +7,7 @@ End-to-end testing with selenium and pytest.
 1. Create and activate the python virtual environment
 
 ```bash
-cd your_default_patch
+cd your_default__project_patch
 python3 -m venv venv
 source venv/bin/activate
 ```
